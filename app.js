@@ -43,8 +43,13 @@ const SHAPE_NAMES = {
   1: "Dot",
   2: "Circle",
   3: "Triangle",
-  4: "Rectangle",
-  5: "Circle",
+  4: "Quadrilateral",
+  5: "Pentagon",
+  6: "Hexagon",
+  7: "Heptagon",
+  8: "Octagon",
+  9: "Nonagon",
+  10: "Circle",
 };
 
 startBtn.addEventListener("click", start);
@@ -167,8 +172,8 @@ function sortByAngle(points) {
 // Build the clip path the fingers describe:
 //   1 tip  → small circle on the fingertip
 //   2 tips → circle whose diameter spans the two tips
-//   3–4    → polygon through the tips (triangle / rectangle)
-//   5+     → circle enclosing every tip
+//   3–9    → n-sided polygon through the tips
+//   10     → circle enclosing every tip
 function shapeFromTips(tips) {
   const path = new Path2D();
   const n = tips.length;
@@ -180,16 +185,16 @@ function shapeFromTips(tips) {
     const cy = (tips[0].y + tips[1].y) / 2;
     const r = Math.max(dist(tips[0], tips[1]) / 2, 20);
     path.arc(cx, cy, r, 0, Math.PI * 2);
-  } else if (n === 3 || n === 4) {
-    const pts = sortByAngle(tips);
-    path.moveTo(pts[0].x, pts[0].y);
-    for (let i = 1; i < pts.length; i++) path.lineTo(pts[i].x, pts[i].y);
-    path.closePath();
-  } else {
+  } else if (n === 10) {
     const cx = tips.reduce((s, p) => s + p.x, 0) / n;
     const cy = tips.reduce((s, p) => s + p.y, 0) / n;
     const r = Math.max(...tips.map((p) => dist(p, { x: cx, y: cy }))) + 16;
     path.arc(cx, cy, r, 0, Math.PI * 2);
+  } else if (n >= 3) {
+    const pts = sortByAngle(tips);
+    path.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) path.lineTo(pts[i].x, pts[i].y);
+    path.closePath();
   }
   return path;
 }
