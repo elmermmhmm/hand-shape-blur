@@ -14,10 +14,10 @@ pixelated/blurred "lens" out of the video feed, shaped by your fingertips.
   | Fingers | Shape |
   | ------- | ----- |
   | 1       | small circle on the fingertip |
-  | 2       | circle spanning the two tips |
+  | 2       | line spanning the two tips |
   | 3       | triangle through the tips |
-  | 4–9     | n-sided polygon through the tips |
-  | 10      | circle enclosing all tips (both hands) |
+  | 4–10    | n-sided polygon through the tips |
+  | flip    | rotating to the back of the hand flips the polygon |
 
 - Inside the shape, the frame is downsampled and re-upscaled with smoothing
   disabled (pixelation), with a CSS-filter blur layered on top. Pixel size
