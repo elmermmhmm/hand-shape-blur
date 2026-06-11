@@ -235,9 +235,9 @@ function render() {
   ctx.restore();
 
   ctx.save();
-  ctx.strokeStyle = "rgba(125, 249, 194, 0.9)";
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
   ctx.lineWidth = 3;
-  ctx.shadowColor = "rgba(125, 249, 194, 0.8)";
+  ctx.shadowColor = "rgba(255, 255, 255, 0.8)";
   ctx.shadowBlur = 14;
   ctx.stroke(path);
   ctx.restore();
@@ -245,7 +245,7 @@ function render() {
   for (const tip of tips) {
     ctx.beginPath();
     ctx.arc(tip.x, tip.y, 6, 0, Math.PI * 2);
-    ctx.fillStyle = "#7df9c2";
+    ctx.fillStyle = "#ffffff";
     ctx.fill();
   }
 }
