@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finger Lens — hand-tracked pixel blur</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="stage">
+    <video id="video" playsinline muted></video>
+    <canvas id="canvas"></canvas>
+
+    <div id="overlay">
+      <header>
+        <h1>Finger Lens</h1>
+        <p>Hold up fingers to carve a shape — the camera image inside it gets pixelated &amp; blurred.</p>
+      </header>
+
+      <div id="hud" hidden>
+        <span id="shape-name">—</span>
+        <span id="finger-count"></span>
+      </div>
+
+      <div id="legend" hidden>
+        <span>1 ☝️ circle</span>
+        <span>2 ✌️ circle between tips</span>
+        <span>3 triangle</span>
+        <span>4 rectangle</span>
+        <span>5 🖐 big circle</span>
+        <span>6+ (two hands) polygon</span>
+      </div>
+
+      <div id="controls" hidden>
+        <label>Pixel size <input id="pixel-size" type="range" min="2" max="48" value="16" /></label>
+        <label>Blur <input id="blur-amount" type="range" min="0" max="20" value="6" /></label>
+      </div>
+
+      <div id="start-screen">
+        <button id="start-btn">Enable camera</button>
+        <p id="status">Camera stays on your device — nothing is uploaded.</p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
